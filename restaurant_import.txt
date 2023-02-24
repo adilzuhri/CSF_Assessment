@@ -1,1 +1,8 @@
 TODO: Task 1 - Write the mongo import command here
+
+//local
+mongoimport -hlocalhost --port=27017 -drstb -crestaurants --jsonArray restaurants.json
+
+//remote
+mongoimport --uri="mongodb+srv://doadmin:<PASSWORD>@db-mongodb-sgp1-85563-64da4530.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=db-mongodb-sgp1-85563" -drst -crestaurants --jsonArray restaurants.json
+
