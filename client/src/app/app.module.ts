@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CuisineListComponent } from './components/cuisine-list.component';
 import { RestaurantCuisineComponent } from './components/restaurant-cuisine.component';
 import { RestaurantDetailsComponent } from './components/restaurant-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RestaurantDetailsComponent } from './components/restaurant-details.comp
     RestaurantDetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
