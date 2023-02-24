@@ -1,22 +1,38 @@
 package vttp2022.csf.assessment.server.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Repository;
 
 import vttp2022.csf.assessment.server.models.Comment;
 import vttp2022.csf.assessment.server.models.Restaurant;
 
+@Repository
 public class RestaurantRepository {
+
+	@Autowired
+	private MongoTemplate mongoTemplate;
 
 	// TODO Task 2
 	// Use this method to retrive a list of cuisines from the restaurant collection
 	// You can add any parameters (if any) and the return type 
 	// DO NOT CHNAGE THE METHOD'S NAME
 	// Write the Mongo native query above for this method
-	//  
-	public ??? getCuisines(???) {
-		// Implmementation in here
+	
+	// db.restaurants.find( {cuisines: "American"})
+	public List<Restaurant> getCuisines() {
+		Query query = new Query();
+		query.with(Sort.by(Sort.Direction.ASC, "cuisines"));
+		return mongoTemplate.find(query, Document.class, "restaurants")
+					.stream()
+					.map(d -> Restaurant.create(d))
+					.toList();
 
 	}
 
@@ -25,9 +41,15 @@ public class RestaurantRepository {
 	// You can add any parameters (if any) and the return type 
 	// DO NOT CHNAGE THE METHOD'S NAME
 	// Write the Mongo native query above for this method
-	//  
-	public ??? getRestaurantsByCuisine(???) {
-		// Implmementation in here
+
+	// db.restaurants.find( {restaurantsbycuisines: "American"}).sort( {name : 1})
+	public List<Restaurant> getRestaurantsByCuisine() {
+		Query query = new Query();
+		query.with(Sort.by(Sort.Direction.ASC, "name"));
+		return mongoTemplate.find(query, Document.class, "restaurants")
+					.stream()
+					.map(d -> Restaurant.create(d))
+					.toList();
 
 	}
 
