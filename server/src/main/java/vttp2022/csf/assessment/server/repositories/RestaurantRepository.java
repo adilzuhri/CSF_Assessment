@@ -1,8 +1,6 @@
 package vttp2022.csf.assessment.server.repositories;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -58,11 +56,18 @@ public class RestaurantRepository {
 	// You can add any parameters (if any) 
 	// DO NOT CHNAGE THE METHOD'S NAME OR THE RETURN TYPE
 	// Write the Mongo native query above for this method
-	//  
-	public Optional<Restaurant> getRestaurant(???) {
-		// Implmementation in here
-		
+
+	// db.restaurants.find( {name: "Ajisen Ramen"})
+	public List<Restaurant> getRestaurant() {
+		Query query = new Query();
+		query.with(Sort.by(Sort.Direction.ASC, "name"));
+		return mongoTemplate.find(query, Document.class, "names")
+					.stream()
+					.map(d -> Restaurant.create(d))
+					.toList();
+
 	}
+		
 
 	// TODO Task 5
 	// Use this method to insert a comment into the restaurant database

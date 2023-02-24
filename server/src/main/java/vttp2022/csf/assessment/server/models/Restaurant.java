@@ -4,6 +4,7 @@ import org.bson.Document;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
+import jakarta.json.JsonValue;
 
 // Do not modify this class
 public class Restaurant {
@@ -90,7 +91,7 @@ public class Restaurant {
                 .add("cuisine", getCuisine())
                 .add("address", getAddress())
 				.add("mapUrl", getMapURL())
-				// .add("coordinates"), getCoordinates())
+				.add("coordinates", (JsonValue) getCoordinates())
                 .build();
     }
 }

@@ -58,7 +58,6 @@ export class CuisineListComponent implements OnInit{
       this.restSvc.getCuisineList(this.pagePerRec, this.currentIndex).subscribe((resp)=> {
         console.log(resp);
         this.restaurant = resp;
-        //console.log(this.games.length);
       })
   }
 }

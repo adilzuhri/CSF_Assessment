@@ -38,9 +38,8 @@ public class RestaurantService {
 	// Use this method to find a specific restaurant
 	// You can add any parameters (if any) 
 	// DO NOT CHNAGE THE METHOD'S NAME OR THE RETURN TYPE
-	public Optional<Restaurant> getRestaurant(???) {
-		// Implmementation in here
-		
+	public List<Restaurant> getRestaurant() {
+		return (List<Restaurant>) restaurantRepo.getRestaurant();
 	}
 
 	// TODO Task 5
